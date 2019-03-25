@@ -1,0 +1,22 @@
+version: "3"
+services:
+  cassandra:
+    image: cassandra
+    network_mode: "host"
+    restart: always
+  migration:
+    image: cassandra
+    network_mode: "host"
+    depends_on:
+    - cassandra
+    volumes:
+    - ./wait-for-cassandra.sh:/wait-for-it.sh
+    - ./backend/src/main/resources/cassandra_schema.cql:/schema.cql
+    command: ["/wait-for-it.sh", "cqlsh", "--file", "/schema.cql"]
+  backend:
+    image: jeanlopes/cassandra-demo-backend:1.0-SNAPSHOT
+    network_mode: "host"
+    depends_on:
+    - cassandra
+    - migration
+    restart: always
