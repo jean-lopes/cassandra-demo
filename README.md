@@ -8,6 +8,7 @@ $ npm install
 $ cd ..
 $ . start.sh
 ```
+Prepare your RAM.
 
 ## Requirements
 - git
