@@ -3,8 +3,9 @@
 ## Usage
 ```bash
 $ git clone https://www.github.com/jean-lopes/cassandra-demo
-$ cd cassandra-demo
-$ . setup.sh
+$ cd cassandra-demo/frontend
+$ npm install
+$ cd ..
 $ . start.sh
 ```
 
